@@ -22,7 +22,7 @@ public class RecyclerViewTestActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置布局
-        setContentView(R.layout.activity_item_decoration_test);
+        setContentView(R.layout.activity_recycler_view_test);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 

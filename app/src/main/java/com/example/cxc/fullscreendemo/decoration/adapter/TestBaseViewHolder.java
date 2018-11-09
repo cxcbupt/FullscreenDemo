@@ -26,7 +26,12 @@ public abstract class TestBaseViewHolder extends RecyclerView.ViewHolder {
             return;
         }
 
-        nameTv.setText(item.getName());
-        ageTv.setText(String.valueOf(item.getAge()));
+        if (nameTv != null) {
+            nameTv.setText(item.getName());
+        }
+
+        if (ageTv != null) {
+            ageTv.setText(String.valueOf(item.getAge()));
+        }
     }
 }

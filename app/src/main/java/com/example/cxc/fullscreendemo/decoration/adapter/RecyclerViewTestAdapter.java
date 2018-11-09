@@ -29,11 +29,11 @@ public class RecyclerViewTestAdapter extends RecyclerView.Adapter<TestBaseViewHo
         switch (viewType) {
             case TYPE_1:
                 View itemView1 = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_type_1_layout, parent, false);
-                holder = new TestBaseViewHolderOne(itemView1);
+                holder = new TestViewHolder(itemView1);
                 break;
             case TYPE_2:
                 View itemView2 = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_type_2_layout, parent, false);
-                holder = new TestBaseViewHolderOne(itemView2);
+                holder = new TestViewHolder(itemView2);
                 break;
         }
         return holder;

@@ -16,7 +16,7 @@ import java.util.List;
 public class RecyclerViewTestActivity extends AppCompatActivity {
     private static final String TAG = "RecyclerViewTestActivity";
 
-    private RecyclerView mRecylerView;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,16 +24,16 @@ public class RecyclerViewTestActivity extends AppCompatActivity {
         //设置布局
         setContentView(R.layout.activity_item_decoration_test);
 
-        mRecylerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         //设置LayoutManager
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecylerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(layoutManager);
 
         //设置Adapter
         RecyclerViewTestAdapter adapter = new RecyclerViewTestAdapter();
-        mRecylerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(adapter);
 
         //设置数据
         List<ItemPO> items = fakeItems();

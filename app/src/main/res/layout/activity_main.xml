@@ -10,4 +10,10 @@
         android:layout_height="wrap_content"
         android:text="打开详情页" />
 
+    <Button
+        android:id="@+id/recycler_view_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开RecyclerView" />
+
 </LinearLayout>

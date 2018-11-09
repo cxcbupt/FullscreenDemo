@@ -32,6 +32,10 @@
         </activity>
 
         <activity android:name=".DetailActivity" />
+
+        <activity
+            android:name=".decoration.RecyclerViewTestActivity"
+            android:label="@string/recycler_view_activity_name" />
     </application>
 
 </manifest>

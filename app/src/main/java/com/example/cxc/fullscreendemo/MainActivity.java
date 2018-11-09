@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.cxc.fullscreendemo.decoration.RecyclerViewTestActivity;
+
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -17,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onDetailBtnClick();
+            }
+        });
+
+        View recyclerBtn = findViewById(R.id.recycler_view_btn);
+        recyclerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTestRecyclerViewBtnClick();
             }
         });
     }
@@ -32,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         extras.putString(ExtraKeyConstans.NAME, "CXC");
         extras.putInt(ExtraKeyConstans.AGE, 22);
         intent.putExtras(extras);*/
+        startActivity(intent);
+    }
+
+    private void onTestRecyclerViewBtnClick() {
+        Intent intent = new Intent(this, RecyclerViewTestActivity.class);
         startActivity(intent);
     }
 }

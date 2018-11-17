@@ -16,4 +16,10 @@
         android:layout_height="wrap_content"
         android:text="打开RecyclerView" />
 
+    <Button
+        android:id="@+id/launch_notification_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Launch Notification" />
+
 </LinearLayout>

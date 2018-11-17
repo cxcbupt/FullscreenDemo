@@ -15,20 +15,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         View detailBtn = findViewById(R.id.detail_btn);
-        detailBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onDetailBtnClick();
-            }
-        });
+        detailBtn.setOnClickListener(v -> onDetailBtnClick());
 
         View recyclerBtn = findViewById(R.id.recycler_view_btn);
-        recyclerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onTestRecyclerViewBtnClick();
-            }
-        });
+        recyclerBtn.setOnClickListener(v -> onTestRecyclerViewBtnClick());
     }
 
     private void onDetailBtnClick() {

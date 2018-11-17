@@ -24,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
     private void onDetailBtnClick() {
         Intent intent = new Intent(this, DetailActivity.class);
         //传参
-        intent.putExtra(ExtraKeyConstans.NAME, "CXC");
-        intent.putExtra(ExtraKeyConstans.AGE, 22);
+        intent.putExtra(ExtraKeyConstants.NAME, "CXC");
+        intent.putExtra(ExtraKeyConstants.AGE, 22);
 
         /*//传参
         Bundle extras = new Bundle();
-        extras.putString(ExtraKeyConstans.NAME, "CXC");
-        extras.putInt(ExtraKeyConstans.AGE, 22);
+        extras.putString(ExtraKeyConstants.NAME, "CXC");
+        extras.putInt(ExtraKeyConstants.AGE, 22);
         intent.putExtras(extras);*/
         startActivity(intent);
     }

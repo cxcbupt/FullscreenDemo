@@ -19,8 +19,8 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         //获取参数
         /*//方式一：逐一获取，并传给Fragment
-        String tUserName = intent == null ? "" : intent.getStringExtra(ExtraKeyConstans.NAME);
-        int tUserAge = intent == null ? -1 : intent.getIntExtra(ExtraKeyConstans.AGE, -1);
+        String tUserName = intent == null ? "" : intent.getStringExtra(ExtraKeyConstants.NAME);
+        int tUserAge = intent == null ? -1 : intent.getIntExtra(ExtraKeyConstants.AGE, -1);
         DetailFragment detailFragment = DetailFragment.newInstance(tUserName, tUserAge);
         Log.d(TAG, "-->onCreate()--tUserName:" + tUserName);
         Log.d(TAG, "-->tUserAge()--tUserAge:" + tUserName);*/

@@ -20,8 +20,8 @@ public class DetailFragment extends Fragment {
 
     public static DetailFragment newInstance(String userName, int userAge) {
         Bundle args = new Bundle();
-        args.putString(ExtraKeyConstans.NAME, userName);
-        args.putInt(ExtraKeyConstans.AGE, userAge);
+        args.putString(ExtraKeyConstants.NAME, userName);
+        args.putInt(ExtraKeyConstants.AGE, userAge);
         Log.d(TAG, "-->newInstance(String userName=" + userName + ", int userAge=" + userAge + ")--");
         return newInstance(args);
     }
@@ -39,8 +39,8 @@ public class DetailFragment extends Fragment {
 
         Bundle args = getArguments();
         if (args != null) {
-            userName = args.getString(ExtraKeyConstans.NAME);
-            userAge = args.getInt(ExtraKeyConstans.AGE);
+            userName = args.getString(ExtraKeyConstants.NAME);
+            userAge = args.getInt(ExtraKeyConstants.AGE);
         }
         Log.d(TAG, "-->onCreate()--userName=" + userName + ",userAge=" + userAge);
     }

@@ -6,25 +6,36 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
+import com.example.cxc.fullscreendemo.apk.PackageUtils;
 import com.example.cxc.fullscreendemo.decoration.RecyclerViewTestActivity;
 import com.example.cxc.fullscreendemo.notification.NotificationUtils;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //打开详情
         View detailBtn = findViewById(R.id.detail_btn);
         detailBtn.setOnClickListener(v -> onDetailBtnClick());
 
+        //打开RecyclerView
         View recyclerBtn = findViewById(R.id.recycler_view_btn);
         recyclerBtn.setOnClickListener(v -> onTestRecyclerViewBtnClick());
 
+        //Launch Notification
         View launchNotificationBtn = findViewById(R.id.launch_notification_btn);
         launchNotificationBtn.setOnClickListener(v -> onLaunchNotificationBtnClick());
+
+        //安装Apk
+        View installApkBtn = findViewById(R.id.install_apk_btn);
+        installApkBtn.setOnClickListener(v -> onInstallApkBtnClick());
     }
 
     private void onDetailBtnClick() {
@@ -65,5 +76,14 @@ public class MainActivity extends AppCompatActivity {
         //Launch Notification
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
         notificationManagerCompat.notify(NOTIFICATION_ID, builder.build());
+    }
+
+
+    private void onInstallApkBtnClick() {
+//        String localAPKPath = PackageUtils.getFilePath(getApplicationContext());
+        String localAPKPath = "/data/data/com.example.cxc.fullscreendemo/cache/fill_screen_1.0.2.apk";
+        Log.d(TAG, "-->onInstallApkBtnClick()--localAPKPath=" + localAPKPath);
+        PackageUtils.onApkDownLoadCompleted(getApplicationContext(), localAPKPath);
+        PackageUtils.onInstallApkBtnClick(this, localAPKPath);
     }
 }

@@ -29,9 +29,15 @@
         android:text="安装apk" />
 
     <Button
-        android:id="@+id/query_intent"
+        android:id="@+id/query_intent_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Query Intent" />
+
+    <Button
+        android:id="@+id/start_activity_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="隐式Intent启动Activity" />
 
 </LinearLayout>

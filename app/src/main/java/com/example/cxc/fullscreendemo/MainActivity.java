@@ -1,6 +1,8 @@
 package com.example.cxc.fullscreendemo;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -12,6 +14,8 @@ import android.view.View;
 import com.example.cxc.fullscreendemo.apk.PackageUtils;
 import com.example.cxc.fullscreendemo.decoration.RecyclerViewTestActivity;
 import com.example.cxc.fullscreendemo.notification.NotificationUtils;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -38,8 +42,12 @@ public class MainActivity extends AppCompatActivity {
         installApkBtn.setOnClickListener(v -> onInstallApkBtnClick());
 
         //Query Intent
-        View queryIntentBtn = findViewById(R.id.query_intent);
+        View queryIntentBtn = findViewById(R.id.query_intent_btn);
         queryIntentBtn.setOnClickListener(v -> onQueryIntentBtnClick());
+
+        //隐式Intent启动Activity
+        View startActivityBtn = findViewById(R.id.start_activity_btn);
+        startActivityBtn.setOnClickListener(v -> onStartActivityBtnClick());
     }
 
     private void onDetailBtnClick() {
@@ -93,6 +101,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void onQueryIntentBtnClick() {
         Log.d(TAG, "-->onQueryIntentBtnClick()--");
-        
+        Intent testAIntent = new Intent();
+        testAIntent.setAction("com.example.cxc.intentFilter.testA");
+//        List<ResolveInfo> resolveInfoList = getPackageManager().queryIntentActivities(testAIntent, PackageManager.MATCH_DEFAULT_ONLY);
+        List<ResolveInfo> resolveInfoList = getPackageManager().queryIntentActivities(testAIntent, PackageManager.MATCH_ALL);
+        if (resolveInfoList != null) {
+            for (ResolveInfo info : resolveInfoList) {
+                Log.d(TAG, "-->info:" + info);
+            }
+        }
+    }
+
+    private void onStartActivityBtnClick() {
+        Log.d(TAG, "-->onStartActivityBtnClick()--");
+        Intent testAIntent = new Intent();
+        testAIntent.setAction("com.example.cxc.intentFilter.testA");
+        if (getPackageManager().resolveActivity(testAIntent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
+            startActivity(testAIntent);
+        }
     }
 }

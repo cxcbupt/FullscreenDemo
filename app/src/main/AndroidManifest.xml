@@ -36,6 +36,23 @@
         <activity
             android:name=".decoration.RecyclerViewTestActivity"
             android:label="@string/recycler_view_activity_name" />
+        <activity
+            android:name=".intentFilter.IntentFilterATestActivity"
+            android:label="@string/intent_filter_test_a">
+            <intent-filter>
+                <action android:name="com.example.cxc.intentFilter.testA" />
+                <action android:name="com.example.cxc.intentFilter.testB" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".intentFilter.IntentFilterBTestActivity"
+            android:label="@string/intent_filter_test_b">
+            <intent-filter>
+                <action android:name="com.example.cxc.intentFilter.testA" />
+                <action android:name="com.example.cxc.intentFilter.testB" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

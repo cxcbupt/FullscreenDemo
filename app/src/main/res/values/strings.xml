@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">FullscreenDemo</string>
     <string name="recycler_view_activity_name">RecyclerViewTest</string>
+    <string name="intent_filter_test_a">intent_filter_test_a</string>
+    <string name="intent_filter_test_b">intent_filter_test_b</string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

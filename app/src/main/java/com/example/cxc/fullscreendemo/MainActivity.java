@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         //安装Apk
         View installApkBtn = findViewById(R.id.install_apk_btn);
         installApkBtn.setOnClickListener(v -> onInstallApkBtnClick());
+
+        //Query Intent
+        View queryIntentBtn = findViewById(R.id.query_intent);
+        queryIntentBtn.setOnClickListener(v -> onQueryIntentBtnClick());
     }
 
     private void onDetailBtnClick() {
@@ -85,5 +89,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "-->onInstallApkBtnClick()--localAPKPath=" + localAPKPath);
         PackageUtils.onApkDownLoadCompleted(getApplicationContext(), localAPKPath);
         PackageUtils.onInstallApkBtnClick(this, localAPKPath);
+    }
+
+    private void onQueryIntentBtnClick() {
+        Log.d(TAG, "-->onQueryIntentBtnClick()--");
+        
     }
 }

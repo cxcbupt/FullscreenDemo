@@ -6,4 +6,9 @@
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="service_test_description">one service only for test by cxc</string>
+    <string name="intent_service_test_description">one intent service only for test by cxc</string>
+    <string name="service_test_description_2">one service only for test by cxc</string>
+
 </resources>

@@ -1,9 +1,13 @@
 package com.example.cxc.fullscreendemo;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -14,6 +18,7 @@ import android.view.View;
 import com.example.cxc.fullscreendemo.apk.PackageUtils;
 import com.example.cxc.fullscreendemo.decoration.RecyclerViewTestActivity;
 import com.example.cxc.fullscreendemo.notification.NotificationUtils;
+import com.example.cxc.fullscreendemo.service.HelloMyService;
 
 import java.util.List;
 
@@ -48,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         //隐式Intent启动Activity
         View startActivityBtn = findViewById(R.id.start_activity_btn);
         startActivityBtn.setOnClickListener(v -> onStartActivityBtnClick());
+
+        //startService
+        View startServiceBtn = findViewById(R.id.start_service_btn);
+        startServiceBtn.setOnClickListener(v -> onStartServiceBtnClick());
     }
 
     private void onDetailBtnClick() {
@@ -118,6 +127,50 @@ public class MainActivity extends AppCompatActivity {
         testAIntent.setAction("com.example.cxc.intentFilter.testA");
         if (getPackageManager().resolveActivity(testAIntent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
             startActivity(testAIntent);
+        }
+    }
+
+
+    private HelloMyService mHelloMyService = null;
+    boolean mBound = false;
+    private ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.d(TAG, "-->onServiceConnected()--name=" + name + ",service=" + service);
+            if (service instanceof HelloMyService.LocalBinder) {
+                mHelloMyService = ((HelloMyService.LocalBinder) service).getService();
+                mBound = true;
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.d(TAG, "-->onServiceDisconnected()--name=" + name);
+            mHelloMyService = null;
+            mBound = false;
+        }
+    };
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Intent bindServiceIntent = new Intent(this, HelloMyService.class);
+        bindService(bindServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unbindService(mServiceConnection);
+        mBound = false;
+    }
+
+    private void onStartServiceBtnClick() {
+        Log.d(TAG, "-->onStartActivityBtnClick()--");
+        if (mBound && mHelloMyService != null) {
+            int randomInt = mHelloMyService.getRandomNumber();
+            Log.d(TAG, "-->onStartServiceBtnClick()--randomInt:" + randomInt);
         }
     }
 }

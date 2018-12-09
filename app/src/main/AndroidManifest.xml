@@ -56,6 +56,34 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
+        <!--There are other attributes that you can include in the <service> element to define properties
+        such as the permissions that are required to start the service
+         and the process in which the service should run.
+         The android:name attribute is the only required attribute—it specifies the class name of the service. -->
+        <!--You can ensure that your service is available to only your app
+        by including the android:exported attribute and setting it to false.
+         This effectively stops other apps from starting your service, even when using an explicit intent.-->
+        <!--Note: Users can see what services are running on their device.
+        If they see a service that they don't recognize or trust, they can stop the service.
+        In order to avoid having your service stopped accidentally by users,
+        you need to add the android:description attribute to the <service> element in your app manifest.
+         In the description, provide a short sentence explaining what the service does and what benefits it provides.-->
+        <service
+            android:name=".service.HelloService"
+            android:description="@string/service_test_description"
+            android:exported="false" />
+
+        <service
+            android:name=".service.HelloIntentService"
+            android:description="@string/intent_service_test_description"
+            android:exported="false" />
+
+        <service
+            android:name=".service.HelloMyService"
+            android:description="@string/service_test_description_2"
+            android:exported="false" />
     </application>
 
 </manifest>

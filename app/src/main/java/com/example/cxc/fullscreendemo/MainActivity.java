@@ -134,6 +134,8 @@ public class MainActivity extends AppCompatActivity {
     private HelloMyService mHelloMyService = null;
     boolean mBound = false;
     private ServiceConnection mServiceConnection = new ServiceConnection() {
+
+        //The system calls this to deliver the IBinder returned by the service's onBind() method.
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "-->onServiceConnected()--name=" + name + ",service=" + service);
@@ -143,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        //The Android system calls this when the connection to the service is unexpectedly lost,
+        // such as when the service has crashed or has been killed. This is not called when the client unbinds.
         @Override
         public void onServiceDisconnected(ComponentName name) {
             Log.d(TAG, "-->onServiceDisconnected()--name=" + name);

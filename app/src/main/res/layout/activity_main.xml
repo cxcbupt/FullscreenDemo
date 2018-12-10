@@ -44,6 +44,6 @@
         android:id="@+id/start_service_activity_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="startService" />
+        android:text="start ServiceTestActivity" />
 
 </LinearLayout>

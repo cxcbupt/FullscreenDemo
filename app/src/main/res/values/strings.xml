@@ -10,5 +10,6 @@
     <string name="service_test_description">one service only for test by cxc</string>
     <string name="intent_service_test_description">one intent service only for test by cxc</string>
     <string name="service_test_description_2">one service only for test by cxc</string>
+    <string name="service_test_activity_name">Service Test</string>
 
 </resources>

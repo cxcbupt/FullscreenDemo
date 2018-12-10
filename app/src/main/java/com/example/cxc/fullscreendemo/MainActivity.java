@@ -1,13 +1,9 @@
 package com.example.cxc.fullscreendemo;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -18,7 +14,7 @@ import android.view.View;
 import com.example.cxc.fullscreendemo.apk.PackageUtils;
 import com.example.cxc.fullscreendemo.decoration.RecyclerViewTestActivity;
 import com.example.cxc.fullscreendemo.notification.NotificationUtils;
-import com.example.cxc.fullscreendemo.service.HelloMyService;
+import com.example.cxc.fullscreendemo.service.ServiceTestActivity;
 
 import java.util.List;
 
@@ -54,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         View startActivityBtn = findViewById(R.id.start_activity_btn);
         startActivityBtn.setOnClickListener(v -> onStartActivityBtnClick());
 
-        //startService
-        View startServiceBtn = findViewById(R.id.start_service_btn);
-        startServiceBtn.setOnClickListener(v -> onStartServiceBtnClick());
+        //start ServiceTestActivity
+        View startServiceBtn = findViewById(R.id.start_service_activity_btn);
+        startServiceBtn.setOnClickListener(v -> onStartServiceActivityBtnClick());
     }
 
     private void onDetailBtnClick() {
@@ -130,51 +126,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    private HelloMyService mHelloMyService = null;
-    boolean mBound = false;
-    private ServiceConnection mServiceConnection = new ServiceConnection() {
-
-        //The system calls this to deliver the IBinder returned by the service's onBind() method.
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            Log.d(TAG, "-->onServiceConnected()--name=" + name + ",service=" + service);
-            if (service instanceof HelloMyService.LocalBinder) {
-                mHelloMyService = ((HelloMyService.LocalBinder) service).getService();
-                mBound = true;
-            }
-        }
-
-        //The Android system calls this when the connection to the service is unexpectedly lost,
-        // such as when the service has crashed or has been killed. This is not called when the client unbinds.
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            Log.d(TAG, "-->onServiceDisconnected()--name=" + name);
-            mHelloMyService = null;
-            mBound = false;
-        }
-    };
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Intent bindServiceIntent = new Intent(this, HelloMyService.class);
-        bindService(bindServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unbindService(mServiceConnection);
-        mBound = false;
-    }
-
-    private void onStartServiceBtnClick() {
-        Log.d(TAG, "-->onStartActivityBtnClick()--");
-        if (mBound && mHelloMyService != null) {
-            int randomInt = mHelloMyService.getRandomNumber();
-            Log.d(TAG, "-->onStartServiceBtnClick()--randomInt:" + randomInt);
-        }
+    private void onStartServiceActivityBtnClick() {
+        Intent intent = new Intent(this, ServiceTestActivity.class);
+        startActivity(intent);
     }
 }

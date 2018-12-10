@@ -80,6 +80,10 @@
             android:description="@string/intent_service_test_description"
             android:exported="false" />
 
+        <activity
+            android:name=".service.ServiceTestActivity"
+            android:label="@string/service_test_activity_name" />
+
         <service
             android:name=".service.HelloMyService"
             android:description="@string/service_test_description_2"

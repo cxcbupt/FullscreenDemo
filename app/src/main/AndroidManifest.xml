@@ -85,7 +85,7 @@
             android:label="@string/service_test_activity_name" />
 
         <service
-            android:name=".service.HelloMyService"
+            android:name=".service.HelloBoundService"
             android:description="@string/service_test_description_2"
             android:exported="false" />
     </application>

@@ -31,7 +31,7 @@ public class ServiceTestActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Intent bindServiceIntent = new Intent(this, HelloMyService.class);
+        Intent bindServiceIntent = new Intent(this, HelloBoundService.class);
         bindService(bindServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
     }
 
@@ -46,23 +46,31 @@ public class ServiceTestActivity extends AppCompatActivity {
 
     private void onGetRandomBtnClick() {
         Log.d(TAG, "-->onGetRandomBtnClick()--");
-        if (mBound && mHelloMyService != null) {
-            int randomInt = mHelloMyService.getRandomNumber();
+        if (mBound && mHelloBoundService != null) {
+            int randomInt = mHelloBoundService.getRandomNumber();
             Log.d(TAG, "-->onGetRandomBtnClick()--randomInt:" + randomInt);
         }
     }
 
 
-    private HelloMyService mHelloMyService = null;
+    private HelloBoundService mHelloBoundService = null;
     boolean mBound = false;
+
+    /**
+     * Defines callbacks for service binding, passed to bindService()
+     * <p>
+     * ServiceConnection, which monitors the connection with the service.
+     * When the Android system creates the connection between the client and service,it calls onServiceConnected() on the ServiceConnection.
+     * The onServiceConnected() method includes an IBinder argument, which the client then uses to communicate with the bound service.
+     */
     private ServiceConnection mServiceConnection = new ServiceConnection() {
 
         //The system calls this to deliver the IBinder returned by the service's onBind() method.
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "-->onServiceConnected()--name=" + name + ",service=" + service);
-            if (service instanceof HelloMyService.LocalBinder) {
-                mHelloMyService = ((HelloMyService.LocalBinder) service).getService();
+            if (service instanceof HelloBoundService.LocalBinder) {
+                mHelloBoundService = ((HelloBoundService.LocalBinder) service).getService();
                 mBound = true;
             }
         }
@@ -72,7 +80,7 @@ public class ServiceTestActivity extends AppCompatActivity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             Log.d(TAG, "-->onServiceDisconnected()--name=" + name);
-            mHelloMyService = null;
+            mHelloBoundService = null;
             mBound = false;
         }
     };

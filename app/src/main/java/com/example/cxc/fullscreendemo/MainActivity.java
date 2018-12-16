@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.example.cxc.fullscreendemo.apk.PackageUtils;
 import com.example.cxc.fullscreendemo.decoration.RecyclerViewTestActivity;
+import com.example.cxc.fullscreendemo.draw.DrawTestActivity;
 import com.example.cxc.fullscreendemo.notification.NotificationUtils;
 import com.example.cxc.fullscreendemo.service.ServiceTestActivity;
 
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         //start ServiceTestActivity
         View startServiceBtn = findViewById(R.id.start_service_activity_btn);
         startServiceBtn.setOnClickListener(v -> onStartServiceActivityBtnClick());
+        //start ServiceTestActivity
+        View startCustomDrawBtn = findViewById(R.id.start_custom_draw_activity_btn);
+        startCustomDrawBtn.setOnClickListener(v -> onStartCustomDrawBtnClick());
     }
 
     private void onDetailBtnClick() {
@@ -128,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void onStartServiceActivityBtnClick() {
         Intent intent = new Intent(this, ServiceTestActivity.class);
+        startActivity(intent);
+    }
+
+    private void onStartCustomDrawBtnClick() {
+        Intent intent = new Intent(this, DrawTestActivity.class);
         startActivity(intent);
     }
 }

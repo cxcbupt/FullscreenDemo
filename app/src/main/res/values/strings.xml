@@ -12,4 +12,6 @@
     <string name="service_test_description_2">one service only for test by cxc</string>
     <string name="service_test_activity_name">Service Test</string>
 
+    <string name="draw_test_activity_name">DrawTest</string>
+
 </resources>

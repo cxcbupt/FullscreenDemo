@@ -88,6 +88,11 @@
             android:name=".service.HelloBoundService"
             android:description="@string/service_test_description_2"
             android:exported="false" />
+
+
+        <activity
+            android:name=".draw.DrawTestActivity"
+            android:label="@string/draw_test_activity_name" />
     </application>
 
 </manifest>
